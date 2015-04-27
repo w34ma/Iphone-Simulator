@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>iPhone Simulator</title>
+ <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+	<div id="iphone">
+		<div>
+			<h2 id = "time"></h2>
+			<p id = "date"></p>
+		</div>
+		<div id = "grids">
+		<canvas id="c1" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></canvas>
+
+		<canvas id="c2" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+
+		<canvas id="c2" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c3" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c4" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<br>
+		<canvas id="c5" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c6" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c7" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c8" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<br>
+		<canvas id="c9" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c10" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c11" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c12" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<br>
+		<canvas id="c13" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c14" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c15" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c16" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<br>
+		<canvas id="c17" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c18" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c19" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+		<canvas id="c20" width="60" height="60" style="border:1px solid #d3d3d3;" draggable="true" ondragstart="drag(event)"></canvas>
+	</div>
+	</div>
+	<div id = "message">
+		<img src = "messages_appscreen.jpg">
+	</div>
+		<div id = "music">
+		<img src = "music_appscreen.jpg">
+	</div>	
+	<div id = "numbers">
+		<img src = "numbers_appscreen.jpg">
+	</div>	
+	<div id = "pages">
+		<img src = "pages_appscreen.jpg">
+	</div>
+	<canvas id="home" width="50" height="50" style="border:1px solid #d3d3d3;" onclick="backtohome()"></canvas>
+ <script>
+
+ 	var myVar=setInterval(function(){myTimer()},1000);
+
+	function myTimer() {
+ 	   var d = new Date();
+ 	   document.getElementById("time").innerHTML = d.toLocaleTimeString();
+ 	   document.getElementById("date").innerHTML = d.toDateString();
+	}
+
+	function getRandom(min, max) {
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	var name1;
+	var name2;
+	var name3;
+	var name4;
+	cavname();
+
+	function cavname(){
+		var num1 = getRandom(1,20);	
+		name1 = 'c'+num1;
+		var num2 = getRandom(1,20);
+		while(num2 == num1){
+			num2 = getRandom(1,20);
+		}	
+		name2 = 'c'+num2;
+		var num3 = getRandom(1,20);
+		while(num3 == num1 || num3 == num2){
+			num2 = getRandom(1,20);
+		}	
+		name3 = 'c'+num3;
+		var num4 = getRandom(1,20);
+		while(num4 == num1 || num4 == num2 || num4 == num3){
+			num4 = getRandom(1,20);
+		}	
+		name4 = 'c'+num4;
+		//alert(name1 + " "+name2 + " " + name3 + " "+ name4);
+	}
+	var canvas1 = document.getElementById(name1),
+	context1 = canvas1.getContext('2d');
+	var canvas2 = document.getElementById(name2),
+	context2 = canvas2.getContext('2d');
+	var canvas3 = document.getElementById(name3),
+	context3 = canvas3.getContext('2d');
+	var canvas4 = document.getElementById(name4),
+	context4 = canvas4.getContext('2d');
+
+	var canArray = [name1,name2,name3,name4];
+	make_base();
+
+	function make_base()
+	{
+  		base_image1 = new Image();
+  		base_image1.src = 'messages.png';
+  		  		base_image1.setAttribute('crossOrigin', 'anonymous');
+  		base_image1.draggable="true";
+  		base_image2 = new Image();
+  		base_image2.src = 'music.png';
+  		base_image3 = new Image();
+  		base_image3.src = 'numbers.png';
+  		base_image4 = new Image();
+  		base_image4.src = 'pages.png';
+  		// var imgArray = [base_image1,base_image2,base_image3,base_image4];
+
+  		base_image4.onload = function(){
+    	context1.drawImage(base_image1, 3, 3);
+    	context2.drawImage(base_image2, 3, 3);
+    	context3.drawImage(base_image3, 3, 3);
+    	context4.drawImage(base_image4, 3, 3);
+  		}
+	}
+	canvas1.addEventListener("click", showup1, false);
+	canvas2.addEventListener("click", showup2, false);
+	canvas3.addEventListener("click", showup3, false);
+	canvas4.addEventListener("click", showup4, false);
+
+function swap(one, two) {
+    document.getElementById(one).style.display = 'block';
+    document.getElementById(two).style.display = 'none';
+}
+function swapback(one, two) {
+    document.getElementById(one).style.display = 'none';
+    document.getElementById(two).style.display = 'block';
+}
+var cur = 0;
+function showup1(event)
+{
+      swap('message','iphone');
+      cur = 1;
+}
+function showup2(event)
+{
+      swap('music','iphone');
+            cur = 2;
+}
+function showup3(event)
+{
+      swap('numbers','iphone');
+            cur = 3;
+}
+function showup4(event)
+{
+      swap('pages','iphone');
+            cur = 4;
+}
+function backtohome(){
+	if(cur == 1){
+		swapback('message','iphone');
+	}
+	else if (cur == 2){
+		swapback('music','iphone');
+	}
+	else if (cur == 3){
+      	swapback('numbers','iphone');
+	}
+	else if (cur == 4){
+      	swapback('pages','iphone');
+	}
+}
+</script>
+
+</body>
+</html>
